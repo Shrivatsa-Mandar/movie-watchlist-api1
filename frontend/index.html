@@ -2,35 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Movie Watchlist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStack | Your Premium Movie Watchlist</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Movie Watchlist</h1>
+    <div class="container animate">
+        <header>
+            <h1>CineStack</h1>
+            <nav id="top-nav" class="nav hidden">
+                <span class="user-badge" id="user-display"></span>
+                <button class="btn-secondary" onclick="logout()">Logout</button>
+            </nav>
+        </header>
 
-    <section id="create-user">
-        <h2>Create User</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="email" id="email" placeholder="Email">
-        <button onclick="createUser()">Create User</button>
-        <p id="user-msg"></p>
-    </section>
+        <!-- Auth Section -->
+        <main id="auth-section">
+            <div class="card" id="login-card">
+                <h2 class="section-title">Login</h2>
+                <div class="input-group">
+                    <input type="email" id="login-email" placeholder="Email Address">
+                    <input type="password" id="login-password" placeholder="Password">
+                </div>
+                <button style="width: 100%;" onclick="login()">Login</button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-dim);">
+                    New here? <a href="#" onclick="showRegister()" style="color: var(--primary);">Create an account</a>
+                </p>
+                <p id="login-msg" style="margin-top: 1rem; text-align: center; color: var(--accent);"></p>
+            </div>
 
-    <section id="search-movie">
-        <h2>Search Movie</h2>
-        <input type="text" id="movie-title" placeholder="Movie title">
-        <button onclick="searchMovie()">Search</button>
-        <pre id="movie-result"></pre>
-    </section>
+            <div class="card hidden" id="register-card">
+                <h2 class="section-title">Join CineStack</h2>
+                <div class="input-group">
+                    <input type="text" id="reg-username" placeholder="Username">
+                    <input type="email" id="reg-email" placeholder="Email Address">
+                    <input type="password" id="reg-password" placeholder="Password">
+                </div>
+                <button style="width: 100%;" onclick="register()">Create Account</button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--text-dim);">
+                    Already have an account? <a href="#" onclick="showLogin()" style="color: var(--primary);">Login</a>
+                </p>
+                <p id="reg-msg" style="margin-top: 1rem; text-align: center; color: var(--accent);"></p>
+            </div>
+        </main>
 
-    <section id="watchlist">
-        <h2>Add to Watchlist</h2>
-        <input type="number" id="user-id" placeholder="User ID">
-        <input type="number" id="movie-id" placeholder="Movie ID">
-        <button onclick="addToWatchlist()">Add</button>
-        <pre id="watchlist-result"></pre>
-        <button onclick="getWatchlist()">Get Watchlist</button>
-    </section>
+        <!-- Main Content -->
+        <main id="main-content" class="hidden">
+            <section class="card">
+                <h2 class="section-title">Search Movies</h2>
+                <div class="input-group" style="flex-direction: row;">
+                    <input type="text" id="movie-title" placeholder="Search for a movie..." style="flex: 1;">
+                    <button onclick="searchMovie()">Search</button>
+                </div>
+                <div id="search-results" class="grid"></div>
+            </section>
+
+            <div class="grid">
+                <section class="card">
+                    <h2 class="section-title">My Watchlist</h2>
+                    <div id="watchlist-results" class="grid"></div>
+                </section>
+
+                <section class="card">
+                    <h2 class="section-title">Recommendations</h2>
+                    <div id="recommendation-results" class="grid"></div>
+                </section>
+            </div>
+        </main>
+    </div>
 
     <script src="app.js"></script>
 </body>
