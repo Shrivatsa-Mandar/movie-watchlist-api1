@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Watchlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Movie Watchlist</h1>
+
+    <section id="create-user">
+        <h2>Create User</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="email" id="email" placeholder="Email">
+        <button onclick="createUser()">Create User</button>
+        <p id="user-msg"></p>
+    </section>
+
+    <section id="search-movie">
+        <h2>Search Movie</h2>
+        <input type="text" id="movie-title" placeholder="Movie title">
+        <button onclick="searchMovie()">Search</button>
+        <pre id="movie-result"></pre>
+    </section>
+
+    <section id="watchlist">
+        <h2>Add to Watchlist</h2>
+        <input type="number" id="user-id" placeholder="User ID">
+        <input type="number" id="movie-id" placeholder="Movie ID">
+        <button onclick="addToWatchlist()">Add</button>
+        <pre id="watchlist-result"></pre>
+        <button onclick="getWatchlist()">Get Watchlist</button>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
